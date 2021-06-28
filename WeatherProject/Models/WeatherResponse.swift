@@ -10,7 +10,7 @@ import Foundation
 struct WeatherResponse: Codable {
     var current: Weather
     var hourly: [Weather]
-    var daily: [DailyWeather]
+    var daily: [DailyWeather]?
     
     static func empty() -> WeatherResponse {
         return WeatherResponse(current: Weather(),

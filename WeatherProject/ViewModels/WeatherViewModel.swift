@@ -11,12 +11,19 @@ import CoreLocation
 final class weatherViewModel: ObservableObject {
     
     @Published var weather = WeatherResponse.empty()
+    @Published var historicalWeather = WeatherResponse.empty()
     
     @Published var city: String = "San Francisco"{
         didSet{
             getLocation()
         }
     }
+    
+    private var latitude: Double = 0
+    
+    private var longitude: Double = 0
+    
+    
     
     private lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -38,6 +45,8 @@ final class weatherViewModel: ObservableObject {
     
     init(){
         getLocation()
+        self.latitude = 37.5485
+        self.longitude = -121.9886
     }
     
     var date: String{
@@ -96,12 +105,15 @@ final class weatherViewModel: ObservableObject {
     
     private func getWeather(coord: CLLocationCoordinate2D?) {
         if let coord = coord {
+            self.latitude = coord.latitude
+            self.longitude = coord.longitude
             let urlString = API.getURLFor(lat: coord.latitude, lon: coord.longitude)
             getWeatherInternal(city: city, for: urlString)
         }else{
             let urlString = API.getURLFor(lat: 37.5485, lon: -121.9886)
             getWeatherInternal(city: city, for: urlString)
         }
+        getHistoricalWeather()
     }
     
     private func getWeatherInternal(city: String, for urlString: String) {
@@ -115,6 +127,26 @@ final class weatherViewModel: ObservableObject {
                 print(err)
             }
         }
+    }
+    
+    private func getHistoricalWeatherInternal(city: String, for urlString: String) {
+        networkManager<WeatherResponse>.fetch(for: URL(string: urlString)!) { (result) in
+            switch result {
+            case .success(let response):
+                //print("Respuesta historico: \(response)")
+                DispatchQueue.main.async {
+                    self.historicalWeather = response
+                }
+            case .failure(let err):
+                print("Error al obtener datos historicos: \(err)")
+            }
+        }
+    }
+    
+    func getHistoricalWeather() {
+        let urlString = API.getHistoricalData(lat: self.latitude, lon: self.longitude)
+        print(urlString)
+        getHistoricalWeatherInternal(city: city, for: urlString)
     }
     
     func getLottieanimationFor(icon: String) -> String{

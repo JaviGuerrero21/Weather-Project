@@ -16,9 +16,9 @@ struct BarView: View {
 
             ZStack (alignment: .bottom) {
                 RoundedRectangle(cornerRadius: cornerRadius)
-                    .frame(width: 30, height: 200).foregroundColor(.black)
+                    .frame(width: 40, height: 100).foregroundColor(.black)
                 RoundedRectangle(cornerRadius: cornerRadius)
-                    .frame(width: 30, height: value).foregroundColor(.green)
+                    .frame(width: 40, height: value).foregroundColor(.white)
                 
             }.padding(.bottom, 8)
         }

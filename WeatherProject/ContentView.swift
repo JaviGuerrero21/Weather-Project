@@ -21,7 +21,7 @@ struct ContentView: View {
                     Button("Historico"){
                         self.isModal = true
                     }.sheet(isPresented: $isModal, content: {
-                        HistoricalView(weatherResponse: cityVM.weather)
+                        HistoricalView(weatherResponse: cityVM.historicalWeather)
                     }).foregroundColor(.white).font(.title)
                 }.padding(.bottom, 40)
             }.background(LinearGradient(gradient: Gradient(colors: [Color(.blue), Color(.blue)]), startPoint: .topLeading, endPoint: .bottomTrailing))
