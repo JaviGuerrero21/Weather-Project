@@ -13,14 +13,19 @@ struct BarView: View {
     
     var body: some View {
         VStack {
-
-            ZStack (alignment: .bottom) {
-                RoundedRectangle(cornerRadius: cornerRadius)
-                    .frame(width: 40, height: 100).foregroundColor(.black)
-                RoundedRectangle(cornerRadius: cornerRadius)
-                    .frame(width: 40, height: value).foregroundColor(.white)
-                
-            }.padding(.bottom, 8)
+            Spacer().frame(height: 20)
+            Text("\(String(format: "%.1f", value))")
+                .font(.footnote)
+                .rotationEffect(.degrees(-90))
+                .offset(y: 0)
+                .zIndex(1)
+                .foregroundColor(Color.black)
+            Rectangle()
+                .fill(Color.white)
+                .frame(width: 30, height: value * 2)
+            Text("\(1)")
+                .font(.footnote)
+                .frame(height: 20)
         }
     }
 }

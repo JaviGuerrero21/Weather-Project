@@ -39,12 +39,10 @@ struct HistoricalView: View {
                     Text("Clouds").tag(2)
                 }.pickerStyle(SegmentedPickerStyle())
                     .padding(.horizontal, 10)
-                HStack(alignment: .center, spacing: 10)
+                HStack(alignment: .bottom, spacing: 10)
                 {
-                    ForEach(self.barValues[pickerSelection], id: \.self){
-                        data in
-                        
-                        BarView(value: data, cornerRadius: CGFloat(integerLiteral: 10*self.pickerSelection))
+                    ForEach(self.barValues[pickerSelection], id: \.self){ data in
+                        BarView(value: data, cornerRadius: CGFloat(integerLiteral: 1))
                     }
                 }.padding(.top, 24).animation(.default)
             }
@@ -73,6 +71,9 @@ struct HistoricalView: View {
             clouds.append(CGFloat(weather.clouds))
             cantidad += 1
             //print("Prueba is \(weather.temp)")
+            if(cantidad == 8){
+                break
+            }
         }
         
         self.barValues.append(temps)
