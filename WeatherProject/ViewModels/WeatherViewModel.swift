@@ -23,8 +23,6 @@ final class weatherViewModel: ObservableObject {
     
     private var longitude: Double = 0
     
-    
-    
     private lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateStyle = .full
