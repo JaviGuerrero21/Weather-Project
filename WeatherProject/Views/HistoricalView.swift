@@ -64,7 +64,7 @@ struct HistoricalView: View {
         var humidity = [HistoricalBar]()
         var clouds = [HistoricalBar]()
         
-        for weather in weatherResponse.hourly{
+        for weather in weatherResponse.hourly.reversed(){
             
             temps.append(HistoricalBar(dt: weather.dt, value: weather.temp))
             humidity.append(HistoricalBar(dt: weather.dt, value: Double(weather.humidity)))
