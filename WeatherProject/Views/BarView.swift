@@ -10,6 +10,7 @@ import SwiftUI
 struct BarView: View {
     var value: CGFloat
     var cornerRadius: CGFloat
+    var hour: String
     
     var body: some View {
         VStack {
@@ -24,7 +25,7 @@ struct BarView: View {
             Rectangle()
                 .fill(Color.white)
                 .frame(width: 30, height: value * 2)
-            Text("\(1)")
+            Text("\(hour)")
                 .font(.footnote)
                 .frame(height: 20)
         }

@@ -50,6 +50,7 @@
 		1FF54EC42680F54B00650A5A /* CityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FF54EC32680F54B00650A5A /* CityView.swift */; };
 		B4BADAF22683D38A000C124A /* HistoricalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BADAF12683D38A000C124A /* HistoricalView.swift */; };
 		B4BADAF42683D427000C124A /* BarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4BADAF32683D427000C124A /* BarView.swift */; };
+		B4C348ED268ACDA800DA887E /* HistoricalBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C348EC268ACDA800DA887E /* HistoricalBar.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,6 +119,7 @@
 		1FF54EC32680F54B00650A5A /* CityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityView.swift; sourceTree = "<group>"; };
 		B4BADAF12683D38A000C124A /* HistoricalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricalView.swift; sourceTree = "<group>"; };
 		B4BADAF32683D427000C124A /* BarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarView.swift; sourceTree = "<group>"; };
+		B4C348EC268ACDA800DA887E /* HistoricalBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricalBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -252,6 +254,7 @@
 				1F57CFFC267D27B500739C74 /* WeatherDetail.swift */,
 				1F57CFFE267D27BE00739C74 /* DailyWeather.swift */,
 				1F57D000267D27DF00739C74 /* Temperature.swift */,
+				B4C348EC268ACDA800DA887E /* HistoricalBar.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -438,6 +441,7 @@
 				1F969526267CF82500B46514 /* ExtensionsApi.swift in Sources */,
 				1F57CFFD267D27B500739C74 /* WeatherDetail.swift in Sources */,
 				B4BADAF42683D427000C124A /* BarView.swift in Sources */,
+				B4C348ED268ACDA800DA887E /* HistoricalBar.swift in Sources */,
 				B4BADAF22683D38A000C124A /* HistoricalView.swift in Sources */,
 				1F324A3A26801C4700E3D4CC /* CityNameView.swift in Sources */,
 				1F57CFF9267D276800739C74 /* WeatherResponse.swift in Sources */,

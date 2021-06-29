@@ -9,10 +9,10 @@ import SwiftUI
 
 struct HistoricalView: View {
     
-    //@ObservedObject var cityVM = weatherViewModel()
+    @ObservedObject var cityVM = weatherViewModel()
     
     @State var pickerSelection = 0
-    var barValues = [[CGFloat]]()
+    var barValues = [[HistoricalBar]]()
     var cantidad = 0
     
     /*
@@ -42,7 +42,7 @@ struct HistoricalView: View {
                 HStack(alignment: .bottom, spacing: 10)
                 {
                     ForEach(self.barValues[pickerSelection], id: \.self){ data in
-                        BarView(value: data, cornerRadius: CGFloat(integerLiteral: 1))
+                        BarView(value: CGFloat(data.value), cornerRadius: CGFloat(integerLiteral: 1), hour: cityVM.getTimeFor(timestamp: data.dt))
                     }
                 }.padding(.top, 24).animation(.default)
             }
@@ -60,15 +60,15 @@ struct HistoricalView: View {
     
     private mutating func setBarValues(weatherResponse: WeatherResponse){
         
-        var temps = [CGFloat]()
-        var humidity = [CGFloat]()
-        var clouds = [CGFloat]()
+        var temps = [HistoricalBar]()
+        var humidity = [HistoricalBar]()
+        var clouds = [HistoricalBar]()
         
         for weather in weatherResponse.hourly{
             
-            temps.append(CGFloat(weather.temp))
-            humidity.append(CGFloat(weather.humidity))
-            clouds.append(CGFloat(weather.clouds))
+            temps.append(HistoricalBar(dt: weather.dt, value: weather.temp))
+            humidity.append(HistoricalBar(dt: weather.dt, value: Double(weather.humidity)))
+            clouds.append(HistoricalBar(dt: weather.dt, value: Double(weather.clouds)))
             cantidad += 1
             //print("Prueba is \(weather.temp)")
             if(cantidad == 8){
