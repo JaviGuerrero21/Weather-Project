@@ -13,4 +13,11 @@ extension API {
     static func getURLFor(lat: Double, lon: Double) -> String {
         return "\(baseURLString)onecall?lat=\(lat)&lon=\(lon)&exclude=minutely&appid=\(Key)&units=imperial"
     }
+    
+    static func getHistoricalData(lat: Double, lon: Double) -> String {
+        //Get actual Unix Epoch Time
+        let timeInterval = Int(NSDate().timeIntervalSince1970 - (3600 * 6))
+        
+        return "\(baseURLString)onecall/timemachine?lat=\(lat)&lon=\(lon)&dt=\(timeInterval)&appid=\(Key)&units=metric"
+    }
 }
